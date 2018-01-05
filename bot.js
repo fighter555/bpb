@@ -13,7 +13,7 @@ var countdown_loop = false;
 var difference;
 var start_timestamp;
 var current_timestamp;
-var countdown_default = "-- HOURS --MINUTES (COUNTDOWN)";
+var countdown_default = "-- HOURS -- MINUTES (COUNTDOWN)";
 var guildRolesVar;
 var refreshrate = 60000;
 var mrHODL = 397518680789090315;

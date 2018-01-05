@@ -105,7 +105,7 @@ client.on('message', message => {
                               case "set": {
                                 message.reply("2");
                                 Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(args.slice(1).join(" "));
-                                message.reply("4");
+                                message.reply("4: " + Array.from(guildRolesVar.keys()).indexOf(countdown_role));
                               }
                               break;
 

@@ -1,0 +1,13 @@
+{
+  "prefix" : "!",
+  "time_interval" : 600000,
+  "roles" : {
+    "Ambassador" : "398348877733822474",
+    "Senator" : "398348743394590720",
+    "Minister" : "398348695772332042",
+    "Counselor" : "398348622468612106",
+    "Affiliate" : "398348562787991553"
+  },
+  "invite_values" : [1,10,20,50,150],
+  "role_values" : ["Affiliate", "Counselor", "Minister", "Senator", "Ambassador"]
+}

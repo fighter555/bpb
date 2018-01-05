@@ -48,6 +48,8 @@ var cdloop = () => {
 client.on('ready', () => {
   console.log('I am ready!');
 
+  guildRolesVar = client.guilds.array()[0].roles;
+  
   guildVar = client.guilds.array()[0];
 
   var doit2 = () => {

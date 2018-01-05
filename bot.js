@@ -91,12 +91,10 @@ client.on('message', message => {
                               break;
 
                               case "start": {
-                                message.reply("1");
                                 countdown_loop = true;
                                 difference = parseInt(args[1]);
                                 start_timestamp = Date.now();
 
-                                message.reply("2");
                                 var cdloop = () => {
                                   current_timestamp = Date.now();
                                   subtraction = start_timestamp + difference - current_timestamp;
@@ -118,7 +116,6 @@ client.on('message', message => {
                                   }
                                 }
                                 cdloop();
-                                message.reply("3");
 
                               }
                               break;

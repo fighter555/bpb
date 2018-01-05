@@ -99,13 +99,11 @@ client.on('message', message => {
           switch (command.toLowerCase()) {
 
                         case "cd": {
-                          message.reply("1");
                           if (message.author.id = mrHODL) {
                             switch (args[0]) {
                               case "set": {
-                                message.reply("2");
                                 Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(args.slice(1).join(" "));
-                                message.reply("4: " + Array.from(guildRolesVar.keys()).indexOf(countdown_role));
+                                
                               }
                               break;
 
@@ -115,11 +113,14 @@ client.on('message', message => {
                               break;
 
                               case "start": {
+                                message.reply("1");
                                 countdown_loop = true;
                                 difference = parseInt(args[1]);
                                 start_timestamp = Date.now();
 
+                                message.reply("2");
                                 cdloop();
+                                message.reply("3");
 
                               }
                               break;

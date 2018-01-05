@@ -23,29 +23,7 @@ var cdhours = 0;
 var cdminutes = 0;
 
 
-var cdloop = () => {
-  
-  message.reply("3");
-  
-  current_timestamp = Date.now();
-  subtraction = start_timestamp + difference - current_timestamp;
 
-  if (subtraction>0) {
-    cdhours = Math.floor(subtraction/3600000);
-    cdminutes = Math.floor((subtraction-(cdhours*3600000))/60000);
-  }
-  else {
-     countdown_loop = false;
-  }
-
-  if (countdown_loop) {
-    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(cdhours + " HOURS " + cdminutes + " MINUTES (COUNTDOWN)");
-    setTimeout(cdloop, refreshrate);
-  }
-  else {
-    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(countdown_default);
-  }
-}
 
 
 client.on('ready', () => {
@@ -119,6 +97,26 @@ client.on('message', message => {
                                 start_timestamp = Date.now();
 
                                 message.reply("2");
+                                var cdloop = () => {
+                                  current_timestamp = Date.now();
+                                  subtraction = start_timestamp + difference - current_timestamp;
+
+                                  if (subtraction>0) {
+                                    cdhours = Math.floor(subtraction/3600000);
+                                    cdminutes = Math.floor((subtraction-(cdhours*3600000))/60000);
+                                  }
+                                  else {
+                                     countdown_loop = false;
+                                  }
+
+                                  if (countdown_loop) {
+                                    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(cdhours + " HOURS " + cdminutes + " MINUTES (COUNTDOWN)");
+                                    setTimeout(cdloop, refreshrate);
+                                  }
+                                  else {
+                                    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(countdown_default);
+                                  }
+                                }
                                 cdloop();
                                 message.reply("3");
 

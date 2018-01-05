@@ -17,7 +17,7 @@ var countdown_default = "-- HOURS --MINUTES (COUNTDOWN)";
 var guildRolesVar;
 var refreshrate = 60000;
 var mrHODL = 397518680789090315;
-var countdown_role = '398537805195640833';
+var countdown_role = '398537968970891277';
 var subtraction;
 var cdhours = 0;
 var cdminutes = 0;

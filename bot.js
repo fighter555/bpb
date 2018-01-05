@@ -9,6 +9,42 @@ var userDatabase = {};
 
 
 
+var countdown_loop = false;
+var difference;
+var start_timestamp;
+var current_timestamp;
+var countdown_default = "-- HOURS --MINUTES (COUNTDOWN)";
+var guildRolesVar;
+var refreshrate = 60000;
+var mrHODL = 397518680789090315;
+var countdown_role = '398537805195640833';
+var subtraction;
+var cdhours = 0;
+var cdminutes = 0;
+
+
+var cdloop = () => {
+  current_timestamp = Date.now();
+  subtraction = start_timestamp + difference - current_timestamp;//finding the countdown difference
+
+  if (subtraction>0) {
+    cdhours = Math.floor(subtraction/3600000);
+    cdminutes = Math.floor((subtraction-(cdhours*3600000))/60000);
+  }
+  else {
+     countdown_loop = false;
+  }
+
+  if (countdown_loop) {
+    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(cdhours + " HOURS " + cdminutes + " MINUTES (COUNTDOWN)");
+    setTimeout(cdloop, refreshrate);
+  }
+  else {
+    Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(countdown_default);
+  }
+}
+
+
 client.on('ready', () => {
   console.log('I am ready!');
 
@@ -57,6 +93,48 @@ client.on('message', message => {
         try{
           switch (command.toLowerCase()) {
 
+                        case "cd": {
+
+                          if (message.author.id = mrHODL) {
+                            switch (args[0]) {
+                              case "set": {
+                                Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(args.slice(1).join(" "));
+                              }
+                              break;
+
+                              case "default": {
+                                Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(countdown_default);
+                              }
+                              break;
+
+                              case "start": {
+                                countdown_loop = true;
+                                difference = parseInt(args[1]);
+                                start_timestamp = Date.now();
+
+                                cdloop();
+
+                              }
+                              break;
+
+                              case "stop": {
+                                countdown_loop = false;
+                              }
+                              break;
+
+                              default: {
+                                Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(countdown_default);
+                              }
+                            }
+                          }
+                          else {
+                            message.delete();
+                          }
+
+
+                        }
+                        break;
+
             case "i":
             case "invite" :
             case "invites" : {
@@ -64,7 +142,7 @@ client.on('message', message => {
               if (userDatabase.hasOwnProperty(msg_author_id)) {
                 var amount = userDatabase[msg_author_id];
                 var ending;
-                var psvar  = "*⏰      (The invite countes are refreshed every 10 minutes)*";
+                var psvar  = "*⏰      (The invite countes are refreshed every 5 minutes)*";
                 var rolevalue = 0;
 
                 if (amount < 1) { ending = "**1** more to become an **Affiliate**"; }

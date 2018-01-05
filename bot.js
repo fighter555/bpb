@@ -24,8 +24,11 @@ var cdminutes = 0;
 
 
 var cdloop = () => {
+  
+  message.reply("3");
+  
   current_timestamp = Date.now();
-  subtraction = start_timestamp + difference - current_timestamp;//finding the countdown difference
+  subtraction = start_timestamp + difference - current_timestamp;
 
   if (subtraction>0) {
     cdhours = Math.floor(subtraction/3600000);
@@ -96,10 +99,11 @@ client.on('message', message => {
           switch (command.toLowerCase()) {
 
                         case "cd": {
-
+                          message.reply("1");
                           if (message.author.id = mrHODL) {
                             switch (args[0]) {
                               case "set": {
+                                message.reply("2");
                                 Array.from(guildRolesVar.values())[Array.from(guildRolesVar.keys()).indexOf(countdown_role)].setName(args.slice(1).join(" "));
                               }
                               break;
@@ -170,7 +174,7 @@ client.on('message', message => {
             }
           }
         } catch (e) {
-          message.reply(e);
+          
         }
 
   }

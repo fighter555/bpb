@@ -146,7 +146,12 @@ client.on('message', message => {
             case "invite" :
             case "invites" : {
 
+              message.reply("1");
+              
               if (userDatabase.hasOwnProperty(msg_author_id)) {
+                
+                message.reply("2");
+                
                 var amount = userDatabase[msg_author_id];
                 var ending;
                 //var psvar  = "*⏰      (The invite countes are refreshed every 10 minutes)*";

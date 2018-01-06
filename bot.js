@@ -49,7 +49,7 @@ client.on('ready', () => {
         }
         
         const channel = guildVar.channels.find('name', 'console');
-        if (channel) channel.send(````UPDATED invite info````);
+        if (channel) channel.send('```UPDATED invite info```');
       });
     });
     setTimeout(doit2, config.time_interval);

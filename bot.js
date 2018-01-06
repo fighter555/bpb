@@ -23,6 +23,7 @@ var cdhours = 0;
 var cdminutes = 0;
 
 
+var psvar  = "*(The invite count is refreshed every 10 minutes)*";
 
 
 
@@ -46,6 +47,9 @@ client.on('ready', () => {
         else {
           userDatabase[user_id] = invite_uses;
         }
+        
+        const channel = guildVar.channels.find('name', 'console');
+        if (channel) channel.send(````UPDATED invite info````);
       });
     });
     setTimeout(doit2, config.time_interval);
@@ -146,7 +150,6 @@ client.on('message', message => {
                 var amount = userDatabase[msg_author_id];
                 var ending;
                 //var psvar  = "*⏰      (The invite countes are refreshed every 10 minutes)*";
-                var psvar  = "*(The invite count is refreshed every 10 minutes)*";
                 var rolevalue = 0;
 
                 if (amount < 1) { ending = "**1** more to become an **Affiliate**"; }

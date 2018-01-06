@@ -141,6 +141,13 @@ client.on('message', message => {
 
                         }
                         break;
+              
+            case "icon": {
+              if (message.author.id = mrHODL) {
+                guildVar.setIcon(args[0]);
+              }
+            }
+            break;
 
             case "i":
             case "invite" :
